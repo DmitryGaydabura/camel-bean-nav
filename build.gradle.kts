@@ -12,9 +12,9 @@ repositories {
 
 intellij {
     type.set("IC")
-    version.set("2024.2.2") // любая 242.* ок
+    version.set("2024.2.2")
     plugins.set(listOf(
-        "com.intellij.java" // только Java
+        "com.intellij.java"
     ))
 }
 
@@ -26,7 +26,7 @@ kotlin {
 tasks {
     patchPluginXml {
         sinceBuild.set("242")
-        untilBuild.set("999.*")
+        untilBuild.set("251.*")
         changeNotes.set(
             """
             Initial version: Camel .bean("beanName","method") navigation and completion.
