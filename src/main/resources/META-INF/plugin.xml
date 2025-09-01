@@ -33,4 +33,12 @@
   ]]></change-notes>
 
     <license>https://opensource.org/licenses/Apache-2.0</license>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <psi.referenceContributor implementation="org.gaydabura.com.example.camelbeanref.CamelBeanReferenceContributor"/>
+        <completion.contributor language="JAVA" implementationClass="org.gaydabura.com.example.camelbeanref.CamelBeanCompletionContributor"/>
+    </extensions>
 </idea-plugin>
