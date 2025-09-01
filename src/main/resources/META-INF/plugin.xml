@@ -1,0 +1,36 @@
+<idea-plugin url="https://www.linkedin.com/in/dmitry-gaydabura-685208242/">
+    <id>org.gaydabura.camel-bean-nav</id>
+    <name>Camel Bean Navigator</name>
+    <vendor url="https://www.linkedin.com/in/dmitry-gaydabura-685208242/" email="gaydabura.d@icloud.com">Gaydabura</vendor>
+
+    <description><![CDATA[
+  Jump from Camel .bean() calls directly to Spring beans and methods.
+  Speeds up navigation and debugging in integration routes.
+
+  <h3>Features</h3>
+  <ul>
+    <li>Go to declaration from <code>"beanName"</code> → <em>@Bean</em> method or <em>@Service/@Component</em> class</li>
+    <li>Go to declaration from <code>"methodName(...)"</code> → matching <em>public</em> method</li>
+    <li>Method name completion in the 2nd argument</li>
+  </ul>
+
+  <h3>Getting started</h3>
+  <ol>
+    <li>Open a route with <code>.bean("transactionService", "saveTransaction(${body})")</code></li>
+    <li>Alt/Option+Click the string to navigate</li>
+  </ol>
+
+  <h3>Notes</h3>
+  <ul>
+    <li>Resolves Spring beans by @Bean, @Component/@Service (incl. qualifier/name)</li>
+    <li>Java DSL supported; Kotlin DSL roadmap</li>
+  </ul>
+  ]]></description>
+
+    <change-notes><![CDATA[
+  0.1.0
+  - Initial release: navigation from Camel .bean() to Spring beans/methods, completion for method name.
+  ]]></change-notes>
+
+    <license>https://opensource.org/licenses/Apache-2.0</license>
+</idea-plugin>
