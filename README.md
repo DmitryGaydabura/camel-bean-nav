@@ -1,4 +1,7 @@
 # Camel Bean Navigator
+![Camel Bean Navigator](src/main/resources/META-INF/pluginIcon.svg)
+
+
 
 [![JetBrains Plugins](https://img.shields.io/jetbrains/plugin/v/org.gaydabura.camel-bean-nav.svg)](https://plugins.jetbrains.com/plugin/28351-camel-bean-nav)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/org.gaydabura.camel-bean-nav.svg)](https://plugins.jetbrains.com/plugin/28351-camel-bean-nav)
