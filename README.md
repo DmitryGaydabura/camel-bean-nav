@@ -1,5 +1,7 @@
 # Camel Bean Navigator
-![Camel Bean Navigator](src/main/resources/META-INF/pluginIcon.svg)
+<p align="center">
+  <img src="src/main/resources/META-INF/pluginIcon.svg" alt="Camel Bean Navigator" width="160">
+</p>
 
 
 
