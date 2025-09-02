@@ -3,8 +3,6 @@
   <img src="src/main/resources/META-INF/pluginIcon.svg" alt="Camel Bean Navigator" width="160">
 </p>
 
-
-
 [![JetBrains Plugins](https://img.shields.io/jetbrains/plugin/v/org.gaydabura.camel-bean-nav.svg)](https://plugins.jetbrains.com/plugin/28351-camel-bean-nav)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/org.gaydabura.camel-bean-nav.svg)](https://plugins.jetbrains.com/plugin/28351-camel-bean-nav)
 
@@ -18,12 +16,9 @@ Speeds up navigation and debugging in integration routes.
 - **Go to declaration** from `"methodName(...)"` → matching `public` method in the bean class  
 - **Method name completion** in the second argument of `.bean(...)`  
 
----
-
-## 🖼 Screenshots
-_Add screenshots or a GIF once the plugin is published._  
-
----
+<p align="center">
+  <img src="src/main/resources/META-INF/demo.gif" alt="Camel Bean Navigator GIF" >
+</p>
 
 ## 🛠 Compatibility
 - IntelliJ IDEA **2024.2+**  
@@ -38,21 +33,4 @@ _Add screenshots or a GIF once the plugin is published._
 - Or download the latest release from [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/28351-camel-bean-nav) and install via:  
   `Settings → Plugins → ⚙ → Install Plugin from Disk…`
 
----
 
-## 📊 Marketplace Widget
-
-Use these official JetBrains Marketplace widgets on your website:
-
-```html
-<script src="https://plugins.jetbrains.com/assets/scripts/mp-widget.js"></script>
-<script>
-  // Replace #yourelement with a real element id on your webpage
-  MarketplaceWidget.setupMarketplaceWidget('card', 28351, "#yourelement");
-</script>
-
-<script src="https://plugins.jetbrains.com/assets/scripts/mp-widget.js"></script>
-<script>
-  // Replace #yourelement with a real element id on your webpage
-  MarketplaceWidget.setupMarketplaceWidget('install', 28351, "#yourelement");
-</script>
