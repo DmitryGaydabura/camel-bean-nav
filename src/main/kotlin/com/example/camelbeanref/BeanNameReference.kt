@@ -1,32 +1,49 @@
 package org.gaydabura.com.example.camelbeanref
 
-import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.*
-import com.intellij.util.IncorrectOperationException
+import com.intellij.psi.util.PsiTreeUtil
 
-/** PsiReference for the 1st argument: "beanName" or class literal's implied bean name (if present as string). */
+/**
+ * Ссылка для 1-го аргумента .bean(<bean>, ...)
+ * Работает и для строкового литерала, и для константы (PsiReferenceExpression).
+ * Наводит на @Bean-метод или @Component/@Service класс.
+ */
 class BeanNameReference(
-    element: PsiLiteralExpression,
+    element: PsiElement,
     private val beanName: String
-) : PsiReferenceBase<PsiLiteralExpression>(element, TextRange(1, element.textLength - 1), /* soft = */ true) {
+) : PsiReferenceBase<PsiElement>(
+    element,
+    // Покрываем полезную часть: для литерала — без кавычек, для идентификатора — целиком.
+    computeRange(element),
+    /* soft = */ true
+) {
 
     override fun resolve(): PsiElement? {
         val project = element.project
         val targets = SpringLikeBeanResolver.resolveBean(project, beanName)
-        return targets.firstOrNull()?.psiElement
+        // Навигация хотя бы к классу бина (или к @Bean-классу)
+        return targets.firstOrNull()?.beanClass
     }
 
-    override fun getVariants(): Array<Any> {
-        // Можно добавить перечисление всех бинов проекта, но это дорого.
-        return emptyArray()
-    }
 
-    @Throws(IncorrectOperationException::class)
-    override fun handleElementRename(newElementName: String): PsiElement {
-        // поддержка Rename — просто поменять строковый литерал
-        val factory = JavaPsiFacade.getElementFactory(element.project)
-        val newLiteral = factory.createExpressionFromText("\"$newElementName\"", element)
-        return element.replace(newLiteral)
+    override fun getVariants(): Array<Any> = emptyArray()
+
+    companion object {
+        private fun computeRange(el: PsiElement): TextRange {
+            return when (el) {
+                is PsiLiteralExpression -> {
+                    val t = el.text
+                    val q1 = t.indexOf('"')
+                    val q2 = t.lastIndexOf('"')
+                    if (q1 >= 0 && q2 > q1) TextRange(q1 + 1, q2) else TextRange(0, t.length)
+                }
+                is PsiReferenceExpression -> {
+                    // идентификатор константы целиком
+                    TextRange(0, el.textLength)
+                }
+                else -> TextRange(0, el.textLength)
+            }
+        }
     }
 }
