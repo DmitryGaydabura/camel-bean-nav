@@ -4,41 +4,45 @@
     <vendor url="https://www.linkedin.com/in/dmitry-gaydabura-685208242/" email="gaydabura.d@icloud.com">Gaydabura</vendor>
 
     <description><![CDATA[
-  Jump from Camel .bean() calls directly to Spring beans and methods.
-  Speeds up navigation and debugging in integration routes.
+      Jump from Camel .bean() calls directly to Spring beans and methods.
+      Speeds up navigation and debugging in integration routes.
 
-  <h3>Features</h3>
-  <ul>
-    <li>Go to declaration from <code>"beanName"</code> → <em>@Bean</em> method or <em>@Service/@Component</em> class</li>
-    <li>Go to declaration from <code>"methodName(...)"</code> → matching <em>public</em> method</li>
-    <li>Method name completion in the 2nd argument</li>
-  </ul>
-
-  <h3>Getting started</h3>
-  <ol>
-    <li>Open a route with <code>.bean("transactionService", "saveTransaction(${body})")</code></li>
-    <li>Alt/Option+Click the string to navigate</li>
-  </ol>
-
-  <h3>Notes</h3>
-  <ul>
-    <li>Resolves Spring beans by @Bean, @Component/@Service (incl. qualifier/name)</li>
-    <li>Java DSL supported; Kotlin DSL roadmap</li>
-  </ul>
-  ]]></description>
+      <h3>Features</h3>
+      <ul>
+        <li>Go to declaration from <code>"beanName"</code> → <em>@Bean</em> method or <em>@Service/@Component</em> class</li>
+        <li>Go to declaration from <code>"methodName(...)"</code> → matching <em>public</em> method</li>
+        <li>Method name completion in the 2nd argument</li>
+        <li>Color highlight when navigation is available</li>
+      </ul>
+    ]]></description>
 
     <change-notes><![CDATA[
-  0.1.0
-  - Initial release: navigation from Camel .bean() to Spring beans/methods, completion for method name.
-  ]]></change-notes>
-
-    <license>https://opensource.org/licenses/Apache-2.0</license>
+      0.1.3
+      - Color highlight fix.
+      0.1.2
+      - Color highlight for navigable .bean() arguments (bean name / method name).
+      0.1.1
+      - Navigation is possible, even if bean declaration consists of the reference to constant.
+      0.1.0
+      - Initial release: navigation from Camel .bean() to Spring beans/methods, completion for method name.
+    ]]></change-notes>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <!-- References & completion -->
         <psi.referenceContributor implementation="org.gaydabura.com.example.camelbeanref.CamelBeanReferenceContributor"/>
         <completion.contributor language="JAVA" implementationClass="org.gaydabura.com.example.camelbeanref.CamelBeanCompletionContributor"/>
+
+        <!-- NEW: Annotator for color highlight -->
+        <annotator language="JAVA"
+                   implementationClass="com.example.camelbeanref.CamelBeanNavigationAnnotator"/>
+
+
+
+        <!-- Default colors for our custom TextAttributesKey -->
+        <additionalTextAttributes scheme="Default" file="colorSchemes/CamelBeanNav_Default.xml"/>
+        <additionalTextAttributes scheme="Darcula" file="colorSchemes/CamelBeanNav_Darcula.xml"/>
     </extensions>
 </idea-plugin>

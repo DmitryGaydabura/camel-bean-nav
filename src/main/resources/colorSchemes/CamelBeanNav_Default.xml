@@ -1,0 +1,10 @@
+<list>
+    <option name="CAMEL_BEAN_NAV.NAVIGABLE">
+        <value>
+            <option name="FOREGROUND" value="2E7D32"/> <!-- зелёный -->
+            <option name="EFFECT_COLOR" value="A5D6A7"/> <!-- мягкое подчёркивание -->
+            <option name="EFFECT_TYPE" value="1"/> <!-- WAVE_UNDERSCORE -->
+            <option name="FONT_TYPE" value="1"/> <!-- BOLD -->
+        </value>
+    </option>
+</list>
